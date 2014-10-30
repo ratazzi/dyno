@@ -13,7 +13,7 @@ function has_auth()
     return store:sismember(string.format(settings.allowed_fmt, ngx.var.host), ngx.var.remote_user) == 1
 end
 
-local field = string.sub(ngx.var.uri, 2)
+local field = ngx.var.uri
 local body_field = string.format('body{%s}', field)
 local content_type_field = string.format('content_type{%s}', field)
 ngx.header["X-Dyno-Domain"] = ngx.var.host
