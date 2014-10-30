@@ -8,16 +8,17 @@ Quickstart
 
 .. code-block:: sh
 
-    redis-cli -n 0 hkeys auth{dyno} username passwd
-    redis-cli -n 0 sadd allowed{assets.example.com} username
+    # Initial username and passwd
+    redis-cli -n 0 hkeys 'auth{dyno}' username passwd
+    redis-cli -n 0 sadd 'allowed{assets.example.com}' username
 
+    # Publish content
     curl -i -X POST --user username:passwd \
     http://127.0.0.1:8000/about \
         --header 'Host: assets.example.com' \
         --data "content_type=application/octet-stream&body=test only"
 
-    curl -i -X GET --user username:passwd \
-        http://127.0.0.1:8000/about \
+    curl -i http://127.0.0.1:8000/about \
         --header 'Host: assets.example.com'
     # or
 
@@ -25,6 +26,7 @@ Quickstart
 
 .. code-block:: python
 
+    # Python example
     import requests
     payload = {
         'content_type': 'application/octet-stream',
