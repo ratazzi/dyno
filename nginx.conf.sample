@@ -1,0 +1,17 @@
+lua_package_path '/home/sandbox/www/dyno.example.com/?.lua;;';
+client_body_buffer_size 1024k;
+
+server {
+    listen       8000;
+    server_name  localhost *.example.com;
+
+    location / {
+        access_by_lua_file /home/sandbox/www/dyno.example.com/auth.lua;
+        content_by_lua_file /home/sandbox/www/dyno.example.com/dyno.lua;
+
+        # remove this line for production
+        lua_code_cache off;
+    }
+}
+
+# vi: set ft=nginx:

@@ -1,0 +1,14 @@
+return {
+    auth_domain = 'auth{dyno.example.com}',
+    allowed_fmt = 'allowed{%s}',
+    max_idle_timeout = 0,
+    pool_size = 50,
+    default_type = 'application/octet-stream',
+
+    redis_uri = {
+        ip = '127.0.0.1',
+        port = 6379,
+    },
+}
+
+-- vi: set ft=lua:
