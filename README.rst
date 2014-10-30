@@ -1,7 +1,7 @@
 Dyno
 ====
 
-A RESTful API content service use `openresty <http://openresty.org/>`_, use basic HTTP auth.
+A simple RESTful API content service via `openresty <http://openresty.org/>`_, use basic HTTP auth.
 
 Quickstart
 ``````````
